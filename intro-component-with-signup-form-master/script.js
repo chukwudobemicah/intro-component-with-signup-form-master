@@ -11,10 +11,16 @@ const checkForValidEmail = function (email) {
 };
 
 const toggleInputErrorMessage = function (inp, opacity) {
-  return (inp.nextElementSibling.style.opacity = opacity);
+  inp.nextElementSibling.textContent = `${inp.getAttribute(
+    'placeholder'
+  )} cannot be empty`;
+  inp.nextElementSibling.style.color = 'var(--red)';
+  inp.nextElementSibling.style.opacity = opacity;
 };
 const toggleEmailErrorMessage = function (email, opacity) {
-  return (email.nextElementSibling.style.opacity = opacity);
+  email.nextElementSibling.textContent = 'Looks like his is not an email.';
+  email.nextElementSibling.style.color = 'var(--red)';
+  email.nextElementSibling.style.opacity = opacity;
 };
 const clearErrorMessage = function (element) {
   return (element.nextElementSibling.textContent = '');
@@ -27,18 +33,20 @@ const showValidMessage = function (element) {
 };
 const checkForEmptyInputs = function (input, email) {
   input.forEach(inp => {
-    if (inp.value === '') toggleInputErrorMessage(inp, 1);
-    else {
+    if (inp.value === '') {
+      clearErrorMessage(inp);
+      toggleInputErrorMessage(inp, 1);
+    } else {
       clearErrorMessage(inp);
       toggleInputErrorMessage(inp, 1);
       showValidMessage(inp);
     }
   });
-  if (email.value === '' || !checkForValidEmail(email.value))
-    toggleEmailErrorMessage(email, 1);
-  else {
+  if (email.value === '' || !checkForValidEmail(email.value)) {
     clearErrorMessage(email);
-    toggleInputErrorMessage(email, 1);
+    toggleEmailErrorMessage(email, 1);
+  } else {
+    clearErrorMessage(email);
     showValidMessage(email);
   }
 };

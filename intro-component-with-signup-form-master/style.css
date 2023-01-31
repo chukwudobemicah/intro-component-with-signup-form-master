@@ -78,7 +78,7 @@ body {
 main {
   display: grid;
   grid-template-rows: 1fr 2fr;
-  width: 85%;
+  width: 88%;
   justify-items: center;
   margin: auto;
   text-align: center;
