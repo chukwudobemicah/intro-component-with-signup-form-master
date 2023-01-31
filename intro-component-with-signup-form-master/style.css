@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Poppins:wght@400;500;600;700&family=Roboto:wght@300&display=swap');
+
+/* RESETS*/
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+/*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+/*
+    6. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+    7. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    8. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+:root {
+  --red: hsl(0, 100%, 74%);
+  --green: hsl(154, 59%, 51%);
+  --blue: hsl(248, 32%, 49%);
+  --darkblue: hsl(249, 10%, 26%);
+  --grayishblue: hsl(246, 25%, 77%);
+}
+/* STYLES */
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background: url(./images/bg-intro-mobile.png) var(--red);
+  background-size: cover;
+}
+main {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  width: 85%;
+  justify-items: center;
+  margin: auto;
+  text-align: center;
+  font-size: 1rem;
+}
+label {
+  display: block;
+  font-size: 0.8rem;
+  text-align: right;
+  padding: 0px !important;
+  margin-top: 0px !important;
+  margin: 0 auto;
+  color: var(--red);
+  font-weight: 700 !important;
+  font: inherit;
+  font-style: italic !important;
+}
+.hidden {
+  display: none;
+}
+.header,
+h2,
+button {
+  color: #fff;
+}
+.header {
+  margin: 40px auto;
+}
+h1 {
+  font-weight: 700;
+  line-height: 2.5rem;
+  margin: 20px 0;
+}
+:is(.header) h1,
+p {
+  transform: translateX(-200%);
+  animation: slide-in 0.5s ease-in forwards;
+  animation-delay: calc(var(--order) * 200ms);
+}
+.h2-div {
+  font-size: 1rem;
+  padding: 15px;
+  background-color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h2 {
+  font-size: inherit;
+  max-width: 60%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 50px;
+}
+.h2-div,
+.form-div {
+  border-radius: 10px;
+  box-shadow: 0px 9px 0px 0px rgba(51, 51, 51, 0.358);
+}
+.form-div {
+  background-color: #fff;
+}
+form {
+  margin: 20px auto;
+}
+:is(form) input,
+button,
+label {
+  width: 85%;
+  margin-top: 10px;
+  padding: 13px;
+  font: inherit;
+}
+input::placeholder,
+input {
+  font: inherit;
+  font-weight: 700 !important;
+  font-style: italic;
+}
+button {
+  background-color: var(--green);
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0px -5px 0px 0px rgba(51, 51, 51, 0.358);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+.terms {
+  font-size: 0.8rem;
+  max-width: 70%;
+  margin: 0 auto;
+}
+.special-text {
+  text-decoration: none;
+  font-weight: 700 !important;
+  color: #fff;
+}
+form .special-text {
+  color: var(--red);
+}
+@media screen and (min-width: 700px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(./images/bg-intro-desktop.png) var(--red);
+  }
+  main {
+    display: flex;
+    width: clamp(1000px, 88%, 88%);
+  }
+  .header {
+    text-align: left;
+    align-self: center;
+    width: calc(100% - 50%);
+  }
+  :is(.header) h1,
+  p {
+    max-width: 80%;
+  }
+  .header h1 {
+    font-size: 3rem;
+    line-height: 50px;
+    font-weight: bolder;
+  }
+  .form-div {
+    padding: 30px 20px;
+  }
+  .content {
+    width: calc(100% - 50%);
+    margin-bottom: 0;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
